@@ -1,0 +1,204 @@
+<template>
+       <div class="relative mx-4 mb-4 lg:mx-0">
+        <button onclick="alert('elieoko')" class="hover:border-indigo-600">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+          <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        </button>
+        <input
+          class="w-full pl-10 pr-8 text-indigo-600 border-gray-200 rounded-md  focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+          type="text"
+          placeholder="What are you looking for"
+        >
+      </div>
+      
+        <label for="toggle" class="flex items-center cursor-pointer">
+    <div class="relative">
+      <input
+        type="checkbox"
+        id="toggle"
+        class="sr-only"
+        v-model="isActive"
+      >
+      <div class="w-10 h-4 bg-gray-300 rounded-full shadow-inner"></div>
+      <div
+        class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"
+        :class="{ 'translate-x-6': isActive }"
+      ></div>
+    </div>
+    <div class="ml-3 text-gray-700">{{ isActive ?"Images":"Show Images" }}</div>
+</label>
+<!-- <div class="relative mx-4 lg:mx-0 w-full">
+  <div
+    class="inline-flex rounded-md shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+    role="toolbar">
+    <button
+      type="button"
+      class="inline-block rounded-l bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700"
+      data-te-ripple-init
+      data-te-ripple-color="light"
+   
+      >Oko</button>
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+          <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <input
+          class="w-full pl-10 pr-4 text-indigo-600 border-gray-200 rounded-md sm:w-64 focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+          type="text"
+          placeholder="Search"
+        >
+        <button
+      type="button"
+      class="inline-block rounded-l bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700"
+      data-te-ripple-init
+      data-te-ripple-color="light"
+   
+      >Oko</button>
+      </div>
+      </div> -->
+</template>
+
+<script  lang="ts">
+export default {
+  data() {
+    return {
+      isActive: false
+    };
+  }
+};
+</script>
+<!-- <script setup lang="ts">
+  const fileTempl = document.getElementById("file-template")
+  const  imageTempl = document.getElementById("image-template")
+  const empty = document.getElementById("empty")
+
+// use to store pre selected files
+let FILES = {};
+
+// check if file is of type image and prepend the initialied
+// template to the target element
+function addFile(target:any, file:any) {
+  const isImage = file.type.match("image.*"),
+    objectURL = URL.createObjectURL(file);
+
+  const clone = isImage
+    ? imageTempl?.content?.cloneNode(true)
+    : fileTempl.content.cloneNode(true);
+
+  clone.querySelector("h1").textContent = file.name;
+  clone.querySelector("li").id = objectURL;
+  clone.querySelector(".delete").dataset.target = objectURL;
+  clone.querySelector(".size").textContent =
+    file.size > 1024
+      ? file.size > 1048576
+        ? Math.round(file.size / 1048576) + "mb"
+        : Math.round(file.size / 1024) + "kb"
+      : file.size + "b";
+
+  isImage &&
+    Object.assign(clone.querySelector("img"), {
+      src: objectURL,
+      alt: file.name
+    });
+
+  empty.classList.add("hidden");
+  target.prepend(clone);
+  console.log(objectURL)
+  FILES[objectURL] = file;
+}
+
+const gallery = document.getElementById("gallery"),
+  overlay = document.getElementById("overlay");
+
+// click the hidden input of type file if the visible button is clicked
+// and capture the selected files
+const hidden = document.getElementById("hidden-input");
+document.getElementById("button").onclick = () => hidden.click();
+hidden.onchange = (e) => {
+  for (const file of e.target.files) {
+    addFile(gallery, file);
+  }
+};
+
+// use to check if a file is being dragged
+const hasFiles = ({ dataTransfer: { types = [] } }) =>
+  types.indexOf("Files") > -1;
+
+// use to track dragenter and dragleave events.
+// this is to know if the outermost parent is dragged over
+// without issues due to drag events on its children
+let counter = 0;
+
+// reset counter and append file to gallery when file is dropped
+function dropHandler(ev) {
+  ev.preventDefault();
+  for (const file of ev.dataTransfer.files) {
+    addFile(gallery, file);
+    overlay.classList.remove("draggedover");
+    counter = 0;
+  }
+}
+
+// only react to actual files being dragged
+function dragEnterHandler(e) {
+  e.preventDefault();
+  if (!hasFiles(e)) {
+    return;
+  }
+  ++counter && overlay.classList.add("draggedover");
+}
+
+function dragLeaveHandler(e) {
+  1 > --counter && overlay.classList.remove("draggedover");
+}
+
+function dragOverHandler(e) {
+  if (hasFiles(e)) {
+    e.preventDefault();
+  }
+}
+
+// event delegation to caputre delete events
+// from the waste buckets in the file preview cards
+gallery.onclick = ({ target }) => {
+  if (target.classList.contains("delete")) {
+    const ou = target.dataset.target;
+    document.getElementById(ou).remove(ou);
+    gallery.children.length === 1 && empty.classList.remove("hidden");
+    delete FILES[ou];
+  }
+};
+
+// print all selected files
+document.getElementById("submit").onclick = () => {
+  
+  alert(`Submitted Files:\n${JSON.stringify(FILES)}`);
+  console.log(FILES);
+};
+
+// clear entire selection
+document.getElementById("cancel").onclick = () => {
+  while (gallery.children.length > 0) {
+    gallery.lastChild.remove();
+  }
+  FILES = {};
+  empty.classList.remove("hidden");
+  gallery.append(empty);
+};
+</script> -->
