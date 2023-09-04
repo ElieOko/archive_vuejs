@@ -36,42 +36,190 @@
     </div>
     <div class="ml-3 text-gray-700">{{ isActive ?"Images":"Show Images" }}</div>
 </label>
-<!-- <div class="relative mx-4 lg:mx-0 w-full">
-  <div
-    class="inline-flex rounded-md shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-    role="toolbar">
-    <button
-      type="button"
-      class="inline-block rounded-l bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700"
-      data-te-ripple-init
-      data-te-ripple-color="light"
-   
-      >Oko</button>
-        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-          <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <input
-          class="w-full pl-10 pr-4 text-indigo-600 border-gray-200 rounded-md sm:w-64 focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-          type="text"
-          placeholder="Search"
-        >
-        <button
-      type="button"
-      class="inline-block rounded-l bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700"
-      data-te-ripple-init
-      data-te-ripple-color="light"
-   
-      >Oko</button>
-      </div>
-      </div> -->
+
+{{ "Code ici" }}
+<div class="grid grid-cols-2 gap-0 border-2 border-gray-400  mb-4">
+  <table class="table-auto border-2 border-gray-400 ">
+  
+  <tbody class="border-2 border-gray-400">
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-1/4  font-semibold">1 Lockyer vide</td>
+      <td class="border-2 border-gray-400">Malcolm Lockyer</td>
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">2</td>
+      <td class="border-2 border-gray-400">The Eagles</td>
+      
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">3</td>
+      <td class="border-2 border-gray-400">Earth, Wind, and Fire</td>
+     
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">4</td>
+      <td class="border-2 border-gray-400">Malcolm Lockyer</td>
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">5</td>
+      <td class="border-2 border-gray-400">The Eagles</td>
+      
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">6</td>
+      <td class="border-2 border-gray-400">Earth, Wind, and Fire</td>
+     
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px] font-semibold">7</td>
+      <td class="border-2 border-gray-400">Malcolm Lockyer</td>
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">8</td>
+      <td class="border-2 border-gray-400">The Eagles</td>
+      
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">9</td>
+      <td class="border-2 border-gray-400">Earth, Wind, and Fire</td>
+     
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 font-semibold w-[30px]">10</td>
+      <td class="border-2 border-gray-400 text-right"> <a href="#" class="text-cyan-400">files</a></td>
+     
+    </tr>
+  </tbody>
+</table>
+<div class="container border-2 border-gray-400 ">
+    <div class="mb-4 grid grid-cols-6 flex ">
+      <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3 ">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px]  mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px]  mr-3">
+ 
+    </div>
+    <div class="group-button right-10 flex right-10 left-0 top-0 bottom-0">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mr-2">
+      Button
+    </button>
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded mr-2">
+      Button
+    </button>
+</div>
+  
+</div>
+ </div>
+ <div class="grid grid-cols-2 gap-0 border-2 border-gray-400">
+  <table class="table-auto border-2 border-gray-400 ">
+  
+  <tbody class="border-2 border-gray-400">
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-1/4  font-semibold">1 Lockyer vide</td>
+      <td class="border-2 border-gray-400">Malcolm Lockyer</td>
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">2</td>
+      <td class="border-2 border-gray-400">The Eagles</td>
+      
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">3</td>
+      <td class="border-2 border-gray-400">Earth, Wind, and Fire</td>
+     
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">4</td>
+      <td class="border-2 border-gray-400">Malcolm Lockyer</td>
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">5</td>
+      <td class="border-2 border-gray-400">The Eagles</td>
+      
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">6</td>
+      <td class="border-2 border-gray-400">Earth, Wind, and Fire</td>
+     
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px] font-semibold">7</td>
+      <td class="border-2 border-gray-400">Malcolm Lockyer</td>
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">8</td>
+      <td class="border-2 border-gray-400">The Eagles</td>
+      
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 w-[30px]  font-semibold">9</td>
+      <td class="border-2 border-gray-400">Earth, Wind, and Fire</td>
+     
+    </tr>
+    <tr class="border-2 border-gray-400">
+      <td class="border-2 border-gray-400 font-semibold w-[30px]">10</td>
+      <td class="border-2 border-gray-400 text-right"> <a href="#" class="text-cyan-400">files</a></td>
+     
+    </tr>
+  </tbody>
+</table>
+<div class="container border-2 border-gray-400 ">
+    <div class="mb-4 grid grid-cols-6 flex ">
+      <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3 ">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px]  mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px] mr-3">
+  <img src="../../public/1.jpg" alt="soficom" class="w-[100px] h-[150px]  mr-3">
+ 
+    </div>
+    <div class="group-button right-10 flex right-10 left-0 top-0 bottom-0">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mr-2">
+      Button
+    </button>
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded mr-2">
+      Button
+    </button>
+</div>
+  
+</div>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </template>
 
 <script  lang="ts">
