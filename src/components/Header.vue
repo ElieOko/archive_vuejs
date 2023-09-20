@@ -13,12 +13,12 @@ const user =  getUser()
 </script>
 
 <template>
-   <nav class="navbar navbar-expand-md navbar-light navbar-laravel  bg-danger">
+   <nav class="navbar navbar-expand-md navbar-light navbar-laravel  bg-[#E4432F]">
     <div class="flex items-center">
     <div class="container p-8 ml-3">
       <a href="/dashboard" class="navbar-brand text-white font-bold text-4xl">
         Soficom Drive
-        <span class="badge bg-secondary text-white  font-mono text-2xl">BETA</span>
+        <span class="badge bg-secondary text-white rounded font-mono text-2xl p-1">BETA</span>
       </a>
     </div>
     <div class="flex items-center">

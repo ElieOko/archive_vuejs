@@ -48,28 +48,23 @@ async function login() {
     </a>
   </div>
 </nav>
-<div class="flex flex-col items-center justify-center mt-9">
+<div class="flex flex-col items-center justify-center mt-8">
         <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
-         
-          <div class="relative px-6 py-6 bg-gray-800 text-white">
-           
+          <div class="relative px-6 py-6 bg-gray-800 h-16 text-white">
             <div class="flex flex-col md:flex-row items-center justify-center md:justify-start">
-              
               <div>
-                <h1 class="text-4xl font-bold mb-2">Login</h1>
+                <h1 class="text-2xl font-bold mb-2 ">Login</h1>
               </div>
             </div>
           </div>
           <div class="overflow-hidden">
-           
               <form class=" p-8 items-center" @submit.prevent="login">
                 <div class="flex items-center p-2">
                   <span class="text-sm text-gray-700 mr-8">Username</span>
                   <input
                     v-model="authUser.username"
                     type="text"
-                    class="block w-80  border-gray-200 rounded-md focus:border-[#2577d5] focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-                  >
+                    class="block w-80  border-gray-200 rounded-md focus:border-[#2577d5] focus:ring focus:ring-opacity-40 focus:ring-indigo-500">
                 </div>
                 <div class="flex items-center p-2">
                   <span class="text-sm text-gray-700 mr-8">Password</span>
@@ -79,8 +74,6 @@ async function login() {
                     class="block w-80 mt-1 border-gray-200 rounded-md focus:border-[#2577d5] focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   >
                 </div>
-        
-      
 
         <div class="flex items-center justify-between mt-4">
           <div>
@@ -103,8 +96,6 @@ async function login() {
           </button>
         </div>
       </form>
-            
-          
           </div>
         </div>
       </div>
