@@ -474,7 +474,7 @@ created(){
 </form>
 <div class="w-full rounded overflow-hidden shadow-lg bg-[#fff]">
     <div class="grid grid-cols-10 " >
-      <img  v-for="item in tabPicture" :key="item.PictureId" alt="soficom" class="w-[100px] h-[150px] mr-3 " :src="item.PublicUrl" >
+      <img  v-for="item in invoice.pictures" :key="item.PictureId" alt="soficom" class="w-[100px] h-[150px] mr-3 " :src="item.PublicUrl" >
     </div>
 </div>
 <div
