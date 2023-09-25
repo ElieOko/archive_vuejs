@@ -12,6 +12,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 const visibleRef = ref<Boolean>(false)
+const media = ref<Array<String>>([])
 const indexRef = ref<number>(0)
 const user =  getUser()
 const open = ref(false)
@@ -121,7 +122,7 @@ export default {
       visibleRef,
       indexRef,
       imgsRef,
-      media:[] as any,
+      media,
       invoices,
       invoicesReq,
       choixFilter,
@@ -443,29 +444,14 @@ export default {
     },
     galleryShow(indexClick:number,picture:Array<IPicture>){
       this.index = indexClick
-     //this.lightbox.showImage(index)
     },
     getPict(data:any,value:number){
-      data.pictures.map((v:IPicture)=>{
-        this.media.push(v.PublicUrl)
-      })
+      this.media = []
+      this.toggler = !this.toggler;
+      this.media = data.map((v:IPicture)=>{return v.PublicUrl})
       this.slide = value + 1
-			this.toggler = !this.toggler;
     },
-    async getPicture(id:number,value:number){
-      axios
-          .get(`${url}/picturebyinvoice/${id}`)
-          .then((response)=>{    
-            // = response.data
-             this.media = []
-            response.data.map((v:IPicture)=>{
-              this.media.push(v.PublicUrl)
-            })
-				      this.slide = value + 1
-				      this.toggler = !this.toggler;
-            console.log("dataPicture =>",response.data)
-          });
-    },
+
     filterGlobal(q:string,choix:string) {
           this.open = true
           console.log("jd",this.user?.user.Admin)
@@ -599,6 +585,7 @@ export default {
 </script>
 
 <template>
+
       <div  class="flex items-center mb-4 " role="alert">
         <div @click="dropdownOpen = !dropdownOpen" class="inline-flex items-center  bg-gray-500 text-white px-5 py-2  hover:bg-gray-700 cursor-pointer" >
             <span>{{ choixFilter}}</span>
@@ -794,6 +781,7 @@ export default {
         @pagination-change-page="getAllInvoice"
     />
     <div  class="grid grid-cols-2 gap-0 border-1 border-gray-400  mb-4 bg-[#fff]"  v-for="u in dataInvoice.data " v-bind:key="u?.InvoiceId">
+      
       <table class="table-auto border-2 border-gray-200 ">
       <tbody class="border-2 border-gray-400">
         <tr class="border-2 border-gray-400 h-10">
@@ -856,15 +844,17 @@ export default {
     </tr>
   </tbody>
   </table>
-
+  
+  
   <div v-if="u.isSelected == true" class="container border-2 relative border-red-400 bottom-0">
     <div class="grid grid-cols-6 mb-24" >
       <img v-if="isActive" v-for="(item,index) in u.pictures"
        :key="item.PictureId" alt="soficom" 
        class="w-[100px] h-[150px] mr-3 "
         :src="item.PublicUrl"
-        @click="getPict(u,index)">
+        @click="getPict(u.pictures,index)">
       <span v-else class="w-[100px] h-[150px] mr-3 "></span>
+      
     </div>
     <div class="group-button absolute  right-1 flex justify-end  left-0 bottom-0 ">
     <button class="bg-gray-400 hover:bg-gray-700  text-white font-bold w-[65px] h-8 rounded  mr-2"  data-te-ripple-init
@@ -902,8 +892,6 @@ export default {
         data-te-ripple-color="light" @click="showData(u?.InvoiceId as number)">
         View
       </button>
-
-	
   </div>
   </div>
   <div v-else  class="container border-2 relative border-gray-400 bottom-0">
@@ -912,6 +900,7 @@ export default {
        :key="item.PictureId" alt="soficom" 
        class="w-[100px] h-[150px] mr-3 "
         :src="item.PublicUrl"
+        @click="getPict(u.pictures,index)"
         >
       <span v-else class="w-[100px] h-[150px] mr-3 "></span>
     </div>
@@ -951,13 +940,7 @@ export default {
         data-te-ripple-color="light" @click="showData(u?.InvoiceId as number)">
         View
       </button>
-      <FsLightbox
-      
-      :toggler="toggler"
-			:slide="slide"
-			:sources="media"
-      type="image"
-		 />
+
   </div>
   </div>
      </div>
@@ -1005,6 +988,15 @@ export default {
     </button>
 
 </div>
+<FsLightbox
+      initialAnimation="example-initial-animation"
+      :loadOnlyCurrentSource="true"
+      :toggler="toggler"
+			:slide="slide"
+      crossorigin="anonymous"
+      type="image"
+			:sources="media"
+		 />
 </template>
 
 <style>

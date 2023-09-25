@@ -25,7 +25,33 @@ export interface Invoice{
     isActive:boolean,
     isSelected?:boolean
 }
-
+export interface Invoice2{
+    InvoiceId?:number
+    InvoiceCode:string
+    InvoiceDesc:string
+    InvoiceBarCode:string
+    DirectoryFId:number
+    subFolder:number
+    InvoiceKeyFId:number
+    dataCreated:string
+    ClientPhone:string
+    ExpiredDate:string
+    ClientName:string 
+    InvoiceUniqueId:string
+    AndroidVersion:string
+    UserFId:number
+    InvoiceDate:string
+    InvoicePath:string
+    BranchFId:number
+    user?:IUser
+    pictures:Array<IPrevPicture>
+    directory?:IDirectory
+    invoicekey?:InvoiceKey
+    dateFrom?:string,
+    dateTo?:string,
+    isActive:boolean,
+    isSelected?:boolean
+}
 export interface InvoiceKey{
     DirectoryFId:number ,
     Invoicekey:string ,
@@ -76,6 +102,9 @@ export interface IMultiple{
     PublicUrl:string
     invoice:Invoice
     isActive:boolean
+}
+export interface IPrevPicture{
+    PublicUrl:string
 }
 export interface IPicture{
     InvoiceFId:number

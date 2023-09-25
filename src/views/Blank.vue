@@ -15,8 +15,9 @@
 			:slide="slide"
       crossorigin="anonymous"
       type="image"
+
 			:sources="[
-				'https://storage.googleapis.com/infinite-strata-226508.appspot.com/GombeIT/Archive-Public/GombeIT-1695044376-2023-02-02%2015.35.35.jpg',
+				'https://storage.googleapis.com/infinite-strata-226508.appspot.com/GombeIT/Archive-Public/Goma-1695643375-PNG_2023-09-25-13-02-35-653_.png',
 				'https://i.imgur.com/fsyrScY.jpg',
 				'https://i.imgur.com/fsyrScY.jpg'
 			]"
