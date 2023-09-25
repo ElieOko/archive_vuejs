@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ocrv/vue-tailwind-pagination": "^0.0.4",
+    "@shortercode/webzip": "^1.1.0-0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
     "@tanstack/vue-table": "^8.9.8",
@@ -19,6 +20,7 @@
     "axios": "^1.4.0",
     "axios-form-data": "^1.1.1",
     "fslightbox-vue": "^2.1.3",
+    "jszip": "^3.10.1",
     "laravel-vue-pagination": "^4.1.1",
     "tw-elements": "^1.0.0-beta3",
     "vue": "^3.3.4",

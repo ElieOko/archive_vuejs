@@ -23,7 +23,7 @@ const user =  getUser()
     </div>
     <div class="flex items-center">
       <span class="flex mx-4 text-gray-600 focus:outline-none">
-        {{ user?.user.username }}
+        {{ user?.user.UserName }}
       </span>
 
       <div class="relative">

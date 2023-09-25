@@ -17,6 +17,7 @@ function getCurrentDate() {
     var day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
+  
 const invoice = ref<Invoice>({
       ClientPhone:'',
       InvoiceCode:'',
@@ -54,7 +55,15 @@ const fileMimeType = computed(() => file.value?.type);
 let isDragging = false;
 const open = ref(false)
 const msg = ref('')
+function clear(){
 
+invoice.value.InvoiceBarCode = ""
+invoice.value.InvoiceDate = getCurrentDate()
+invoice.value.InvoiceCode = ""
+invoice.value.InvoiceDesc = ""
+invoice.value.DirectoryFId = 0
+invoice.value.InvoiceKeyFId = 0
+}
 const tabPicture = ref<any>()
 const previewUrl = ref<Array<IDataFile>>([]);
 const images = ref<Array<IDataFile>>([]);
@@ -72,14 +81,11 @@ async function createInvoice(){
     console.log("Voir plus grand ->",images.value[0])
     invoice.value.AndroidVersion = navigator.userAgent
     invoice.value.InvoicePath = "test"
-    const data = JSON.parse(JSON.stringify(invoice.value))
-    // const dataImage = JSON.parse(JSON.stringify())
-    // formData.append('image',images.value[0].name as string);
+    const data = JSON.parse(JSON.stringify(invoice.value));
     formData.append('image[]',images.value[0].content);
     console.log('createInvoice: ', data)
     const axiosInstance = axios.create();
     axiosInstance.defaults.transformRequest = AxiosFormData;
-
     try {        
         msg.value = "Traitement encours"
         open.value = true
@@ -91,23 +97,14 @@ async function createInvoice(){
          formData.append('image',v.content);
          formData.append('uniqueId',`${milliseconds}`)
          const rep= await apiClient.post(`${url}/picture`,formData)
-         
-        //  invoice.value.ClientName =""
-        //  invoice.value.ClientPhone =""
-        //  invoice.value.InvoiceBarCode = ""
-        //  invoice.value.InvoiceDate = getCurrentDate()
-        //  invoice.value.InvoiceCode = ""
-        //  invoice.value.InvoiceDesc = ""
-        //  invoice.value.InvoiceUniqueId = ""
-        //  invoice.value.ExpiredDate = getCurrentDate()
+        
          if(images.value.length - 1 == k){
-          msg.value = "To store"
+          msg.value = "Enregistremet réussi avec succès"
           const data :any= rep.data.picture
-            open.value = false
+            //open.value = false
            tabPicture.value = data
          }
         })
-       
       } catch (error) {
         console.error(error)
       }
@@ -116,7 +113,6 @@ async function createInvoice(){
       console.log('Erreur')
     }
 }
-
 const uploadFile = (event:any) => {
   const files = event.target.files
   console.log("image ",files)
@@ -154,7 +150,6 @@ function removeImageList(indice:number){
   previewUrl.value.splice(indice,1)
   images.value.slice(indice,1)
 }
-
 
 const submitFile = async () => {
   const reader = new FileReader();
@@ -231,36 +226,25 @@ export default {
 
     drop(e:any) {
       e.preventDefault();
-      //this.uploadFile(e.dataTransfer.files)
       console.log("prevent ->",e.dataTransfer.files)
       const files = e.dataTransfer.files
-      
       for(let i = 0; i < e.dataTransfer.files.length;i++){
-    //const reader = new FileReader()
-    let fileSrc = URL.createObjectURL(files[i])
-   // reader.readAsDataURL(files[i])
-    // reader.onload = () => {
-      setTimeout(() => {
-        URL.revokeObjectURL(fileSrc);
-      }, 1000);
-      const data = {
-        name: files[i].name,
-        content: files[i],
-        file:files[i]
+        let fileSrc = URL.createObjectURL(files[i])
+          setTimeout(() => {
+            URL.revokeObjectURL(fileSrc);
+          }, 1000);
+          const data = {
+            name: files[i].name,
+            content: files[i],
+            file:files[i]
+          }
+          previewUrl.value.push({file:fileSrc as string,content:files[i]})
+          images.value.push(data)
       }
-      // const d = reader.result as string
-       //const encodedFile = d.split(",")[1]
-      previewUrl.value.push({file:fileSrc as string,content:files[i]})
-      images.value.push(data)
-    //}
-    //reader.readAsDataURL(files[i])
-  }
-      // this.fileInput.files = e.dataTransfer.files;
-      //this.onChange();
-     // this.uploadFile
       this.isDragging = false;
     },
     onBack,
+    clear,
     changeSelect(){
       
       if(invoice.value.DirectoryFId){
@@ -355,7 +339,7 @@ created(){
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-       Code
+       Code 
       </label>
       <input v-model="invoice.InvoiceCode" 
        required class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
@@ -423,7 +407,7 @@ created(){
         Key
       </label>
       <div class="relative">
-      <select required   v-model="invoice.InvoiceKeyFId" class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" >
+      <select  v-model="invoice.InvoiceKeyFId" class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" >
         <option v-for="item in listKeys" :key="item.id" :value="item.id">
                       {{ item.name }}
                     </option>
@@ -438,9 +422,15 @@ created(){
       <button  class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" >
        Submit
       </button>
-      <button class="shadow bg-[#222121] hover:bg-[#222121] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="reset">
-       Retour
+      <button type="button" @click="clear()" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" >
+       Clear
       </button>
+      <router-link
+          to="/dashboard">
+      <button type="button" class="shadow bg-[#222121] hover:bg-[#222121] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" >
+       Back
+      </button>
+    </router-link>
   </div>
 </div>
   </div>
@@ -469,7 +459,7 @@ created(){
                </label>
                 <label for="fileInput" class="relative bg-[#fff] px-4 py-2 rounded-md text-blue-300 cursor-pointer mb-4">
                   <span class="">Select a files</span>
-                  <input id="fileInput" type="file" name="files" ref="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer pointer-events-none" multiple accept=".jpg,.jpeg,.png"  @change="uploadFile">
+                  <input id="fileInput" type="file" name="files" ref="fileInput" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer pointer-events-none" multiple accept=".jpg,.jpeg,.png"  @change="uploadFile">
                 </label>
               </div>
               <div class="container grid grid-cols-6 gap-4 p-4">

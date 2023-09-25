@@ -8,8 +8,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const authUser = ref<IUserAuth>({
-  username:'',
-  password:''
+  UserName:'',
+  UserPass:''
 })
 const open = ref(false)
 const msg = ref('')
@@ -34,7 +34,7 @@ async function login() {
     }
   } catch (error) {
     console.log("bug:", error);
-    alert('Unauthorized')
+    alert('User not found with data provide')
   }
 }
 </script>
@@ -62,14 +62,14 @@ async function login() {
                 <div class="flex items-center p-2">
                   <span class="text-sm text-gray-700 mr-8">Username</span>
                   <input
-                    v-model="authUser.username"
+                    v-model="authUser.UserName"
                     type="text"
                     class="block w-80  border-gray-200 rounded-md focus:border-[#2577d5] focus:ring focus:ring-opacity-40 focus:ring-indigo-500">
                 </div>
                 <div class="flex items-center p-2">
                   <span class="text-sm text-gray-700 mr-8">Password</span>
                   <input
-                    v-model="authUser.password"
+                    v-model="authUser.UserPass"
                     type="password"
                     class="block w-80 mt-1 border-gray-200 rounded-md focus:border-[#2577d5] focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   >

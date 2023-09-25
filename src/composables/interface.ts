@@ -22,15 +22,14 @@ export interface Invoice{
     invoicekey?:InvoiceKey
     dateFrom?:string,
     dateTo?:string,
-    isActive:boolean
+    isActive:boolean,
+    isSelected?:boolean
 }
 
 export interface InvoiceKey{
     DirectoryFId:number ,
     Invoicekey:string ,
     InvoicekeyId:number,
-    created_at?: string,
-    updated_at?:string
 }
 
 export interface IFile{
@@ -43,15 +42,12 @@ export interface IUserApp{
 }
 export interface IUser{
     UserId:number | any
-    username:string
-    mail:string
+    UserName:string
     BranchFId:number | any
-    created_at:string
-    email_verified_at?:string
-    phone?:string
-    serialNumber?:string
+    Phone?:string
+    Admin:number
+    SerialNumber?:string
     smstoken?:string
-    updated_at?:string
     branch?:IBranch
 }
 export interface IBranch{
@@ -59,17 +55,16 @@ export interface IBranch{
     BranchName:string
 }
 export interface IUserAuth{
-    username:string
-    password:string
+    UserName:string
+    UserPass:string
 }
 
 export interface IDirectory{
     DirectoryId: number, 
     DirectoryName: string, 
-    parentId?: number , 
-    available: boolean, 
-    created_at?: string, 
-    updated_at?: string
+    ParentFId?: number , 
+    Available: boolean, 
+    ForClient: boolean
 }
 
 export interface IMultiple{
@@ -79,8 +74,6 @@ export interface IMultiple{
     PictureOriginalName:string
     PicturePath:string
     PublicUrl:string
-    created_at?:string
-    updated_at?:string
     invoice:Invoice
     isActive:boolean
 }
@@ -91,8 +84,6 @@ export interface IPicture{
     PictureOriginalName:string
     PicturePath:string
     PublicUrl:string
-    created_at?:string
-    updated_at?:string
     isActive:boolean
 }
 export interface IAllInvoicePicture{
