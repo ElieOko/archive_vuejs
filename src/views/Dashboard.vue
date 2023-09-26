@@ -780,7 +780,7 @@ export default {
         class="mb-4 "
         @pagination-change-page="getAllInvoice"
     />
-    <div  class="grid grid-cols-2 gap-0 border-1 border-gray-400  mb-4 bg-[#fff]"  v-for="u in dataInvoice.data " v-bind:key="u?.InvoiceId">
+    <div  class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-0 border-1 border-gray-400  mb-4 bg-[#fff]"  v-for="u in dataInvoice.data " v-bind:key="u?.InvoiceId">
       
       <table class="table-auto border-2 border-gray-200 ">
       <tbody class="border-2 border-gray-400">
@@ -847,10 +847,10 @@ export default {
   
   
   <div v-if="u.isSelected == true" class="container border-2 relative border-red-400 bottom-0">
-    <div class="grid grid-cols-6 mb-24" >
+    <div class="grid grid-cols-1 sm:grid-cols-6 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 mb-24" >
       <img v-if="isActive" v-for="(item,index) in u.pictures"
        :key="item.PictureId" alt="soficom" 
-       class="w-[100px] h-[150px] mr-3 "
+       class="object-none  w-full mr-3 "
         :src="item.PublicUrl"
         @click="getPict(u.pictures,index)">
       <span v-else class="w-[100px] h-[150px] mr-3 "></span>

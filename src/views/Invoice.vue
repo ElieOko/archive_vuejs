@@ -325,7 +325,7 @@ created(){
 </script>
 
 <template>
-  <form class="grid grid-cols-2 gap-6 mb-4 relative" @submit.prevent="createInvoice"  enctype="multipart/form-data">
+  <form class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 mb-4 relative" @submit.prevent="createInvoice"  enctype="multipart/form-data">
     <div class="w-full rounded overflow-hidden shadow-lg bg-[#fff]">
       <div class="relative px-6 py-6 card-head h-16 text-black">
             <div class="flex flex-col md:flex-row items-center justify-center md:justify-start">
