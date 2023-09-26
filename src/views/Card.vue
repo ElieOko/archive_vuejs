@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <h3 class="text-3xl font-semibold text-gray-700">
       Card
     </h3>
@@ -95,10 +95,10 @@
   <div>
     <input type="file" @change="handleFileChange" accept="image/*">
     <img v-if="previewUrl" :src="previewUrl" alt="Preview">
-  </div>
+  </div> -->
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue';
 
 export default {
@@ -107,20 +107,20 @@ export default {
   setup() {
     const previewUrl = ref('');
 
-    const handleFileChange = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          previewUrl.value = reader.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    };
+    // const handleFileChange = (evenMt) => {
+    //   const file = event.target.files[0];
+    //   if (file) {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //       previewUrl.value = reader.result;
+    //     };
+    //     reader.readAsDataURL(file);
+    //   }
+    // };
 
     return {
       previewUrl,
-      handleFileChange,
+      // handleFileChange,
     };
   },
 };

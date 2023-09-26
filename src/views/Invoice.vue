@@ -203,7 +203,7 @@ export default {
           keyInvoice:[{
             DirectoryFId:0 ,
             Invoicekey:'' ,
-            InvoicekeyId:0,
+            InvoiceKeyId:0,
             created_at: '',
             updated_at:''
           }],
@@ -284,7 +284,7 @@ export default {
                 this.listKeys = []
               }
               tour++
-              this.listKeys.push({id:v.InvoicekeyId,name:v.Invoicekey})
+              this.listKeys.push({id:v.InvoiceKeyId,name:v.Invoicekey})
            }
         })
       }

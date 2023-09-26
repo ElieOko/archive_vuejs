@@ -11,4 +11,4 @@ created_at?:string
 parentId?:number
 updated_at?:string
 }
-export const url ="http://127.0.0.1:8000/api"
+export const url ="https://archive.archi-tech.site/api"
