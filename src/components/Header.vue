@@ -13,16 +13,16 @@ const user =  getUser()
 </script>
 
 <template>
-   <nav class="navbar navbar-expand-md navbar-light navbar-laravel  bg-[#E4432F]">
+   <nav class="navbar navbar-expand-md navbar-light navbar-laravel h-18  bg-[#E4432F]">
     <div class="flex items-center">
     <div class="container p-8 ml-3">
-      <a href="/dashboard" class="navbar-brand text-white font-bold text-4xl">
+      <a href="/dashboard" class="navbar-brand text-white font-bold text-2xl left-5">
         Soficom Drive
-        <span class="badge bg-secondary text-white rounded font-mono text-2xl p-1">BETA</span>
+        <span class="badge bg-secondary text-white rounded font-mono  p-1">BETA</span>
       </a>
     </div>
     <div class="flex items-center">
-      <span class="flex mx-4 text-gray-600 focus:outline-none">
+      <span class="flex mx-4 text-white focus:outline-none">
         {{ user?.user.UserName }}
       </span>
 

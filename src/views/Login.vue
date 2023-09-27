@@ -40,11 +40,11 @@ async function login() {
 </script>
 
 <template>
- <nav class="navbar navbar-expand-md navbar-light navbar-laravel  bg-danger">
+ <nav class="navbar navbar-expand-md navbar-light navbar-laravel h-18 bg-[#E4432F]">
   <div class="container p-8 ml-3">
-    <a href="https://archive.soficomit.com" class="navbar-brand text-white font-bold text-4xl">
+    <a href="https://archive.soficomit.com" class="navbar-brand text-white font-bold text-2xl">
       Soficom Drive
-      <span class="badge bg-secondary text-white  font-mono text-2xl">BETA</span>
+      <span class="badge bg-secondary text-white  font-mono ">BETA</span>
     </a>
   </div>
 </nav>
