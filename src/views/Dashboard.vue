@@ -9,12 +9,14 @@ import { TailwindPagination } from 'laravel-vue-pagination';
 // @ts-ignore
 import FsLightbox from "fslightbox-vue/v3"
 import { useRouter } from 'vue-router';
+import { useTestStore } from '@/composables/store';
 
 const router = useRouter()
 const visibleRef = ref<Boolean>(false)
 const media = ref<Array<String>>([])
 const indexRef = ref<number>(0)
 const user =  getUser()
+console.log("Loading user",user)
 const open = ref(false)
 const imgsRef = ref<Array<String>>()
 const lightbox = ref()
@@ -112,6 +114,7 @@ export default {
   
   data() {
     return {
+      store:this.useTestStore(),
       user,
       collectionInvoiceSelected:[] as Array<any>,
       compteurSelection:0,
@@ -164,6 +167,7 @@ export default {
     };
   },
   methods:{
+    useTestStore,
     getUser,
     clear,
     zipAll,
@@ -454,11 +458,12 @@ export default {
     },
     reloadPage() {
       window.location.reload();
+   
     },
     filterGlobal(q:string,choix:string) {
           this.open = true
-          console.log("jd",this.user?.user.Admin)
-          if(this.user?.user.Admin == 1){
+          console.log("jd",this.store.username.user.Admin)
+          if(this.store.username.user.Admin == 1){
             switch (choix ) {
             case "All":
                 this.open = true
@@ -560,11 +565,19 @@ export default {
 
   },
   computed:{
+    
+    // reloadPage()
+    // {
+    //   window.location.reload();
+   
+    // }
   },
   created(){
-    this.reloadPage
+    
+   // this.reloadPage
   },
   mounted(){
+    //this.reloadPage
     axios
   .get(`${url}/alldirectory`)
   .then((response)=>{
@@ -630,7 +643,7 @@ export default {
           <div
             v-show="dropdownOpen"
             class="absolute left-20 z-20 w-48 py-2 mt-0 bg-white rounded-md shadow-xl">
-          <span v-if="user?.user.Admin == 1" v-for ="choise in selectFilter" @click="changeSelectFilter(choise)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#7188b3] cursor-pointer hover:text-white">
+          <span v-if="store.username.user.Admin == 1" v-for ="choise in selectFilter" @click="changeSelectFilter(choise)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#7188b3] cursor-pointer hover:text-white">
             {{choise}}
           </span>
           <span v-else v-for ="choise in selectFilter2" @click="changeSelectFilter(choise)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#7188b3] cursor-pointer hover:text-white">
@@ -669,11 +682,10 @@ export default {
     />
   </svg>
 
-  <span v-if="user?.user.Admin == 1" @click="startSearch" class="ml-1 text-[#255287] font-bold cursor-pointer">Advanced Search</span>
+  <span v-if="store.username.user.Admin == 1" @click="startSearch" class="ml-1 text-[#255287] font-bold cursor-pointer">Advanced Search</span>
 </span>
      
 </div>
-  <!-- {{user}} -->
     <div v-if="dataInvoice.data?.length > 0" class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3 mb-4" role="alert">
       <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
       <p>{{dataInvoice.data.length }} Invoices to find.</p>

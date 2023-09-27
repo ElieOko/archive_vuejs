@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { url } from '@/composables/api';
 import { setUser } from '@/composables/userService';
+import { useTestStore } from '@/composables/store';
 import type { IUser, IUserApp, IUserAuth } from '@/composables/interface';
 import axios from 'axios';
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+const store = useTestStore()
 const router = useRouter()
 const authUser = ref<IUserAuth>({
   UserName:'',
@@ -23,6 +25,7 @@ async function login() {
     const response = await axios.post(`${url}/login`,data);
     console.log("Réponse de l'API :", response.data);
     if(response.status == 201){
+      store.changeUsername(response.data as IUserApp) 
       const user : IUserApp = response.data 
       console.log("User:", user);
       router.push('/dashboard')

@@ -12,6 +12,7 @@ import Blank from './views/Blank.vue'
 import Invoice from './views/Invoice.vue'
 import Error404 from './views/Error404.vue'
 import { getUser } from './composables/userService'
+import { useTestStore } from './composables/store'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -23,7 +24,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
-    meta:{ requiresAuth: true } 
+    meta:{ requiresAuth: true , reload: true} 
   },
   {
     path: '/forms',
@@ -72,6 +73,7 @@ const router = createRouter({
   routes,
 })
 router.beforeEach((to, from, next) => {
+  const store = useTestStore()
   if (to.meta.requiresAuth && !getUser()) {
     next('/'); // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
   } else {
