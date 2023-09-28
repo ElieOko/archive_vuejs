@@ -114,7 +114,7 @@ export default {
   
   data() {
     return {
-      store:this.useTestStore(),
+      store:getUser(),
       user,
       collectionInvoiceSelected:[] as Array<any>,
       compteurSelection:0,
@@ -463,7 +463,7 @@ export default {
     filterGlobal(q:string,choix:string) {
           this.open = true
         
-          if(this.store.username.user?.Admin == 1){
+          if(this.store?.user?.Admin == 1){
             switch (choix ) {
             case "All":
                 this.open = true
@@ -578,6 +578,7 @@ export default {
   },
   mounted(){
     //this.reloadPage
+    this.useTestStore
     axios
   .get(`${url}/alldirectory`)
   .then((response)=>{
@@ -643,7 +644,7 @@ export default {
           <div
             v-show="dropdownOpen"
             class="absolute left-20 z-20 w-48 py-2 mt-0 bg-white rounded-md shadow-xl">
-          <span v-if="store.username.user?.Admin == 1" v-for ="choise in selectFilter" @click="changeSelectFilter(choise)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#7188b3] cursor-pointer hover:text-white">
+          <span v-if="store?.user?.Admin  == 1" v-for ="choise in selectFilter" @click="changeSelectFilter(choise)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#7188b3] cursor-pointer hover:text-white">
             {{choise}}
           </span>
           <span v-else v-for ="choise in selectFilter2" @click="changeSelectFilter(choise)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#7188b3] cursor-pointer hover:text-white">
@@ -682,7 +683,7 @@ export default {
     />
   </svg>
 
-  <span v-if="store.username.user?.Admin == 1" @click="startSearch" class="ml-1 text-[#255287] font-bold cursor-pointer">Advanced Search</span>
+  <span v-if="store?.user?.Admin == 1" @click="startSearch" class="ml-1 text-[#255287] font-bold cursor-pointer">Advanced Search</span>
 </span>
      
 </div>
